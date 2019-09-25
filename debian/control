@@ -1,0 +1,12 @@
+Source: ros-eloquent-rosidl-typesupport-fastrtps-c
+Section: misc
+Priority: extra
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-eloquent-ament-cmake, ros-eloquent-ament-lint-auto, ros-eloquent-ament-lint-common, ros-eloquent-fastcdr, ros-eloquent-fastrtps, ros-eloquent-fastrtps-cmake-module, ros-eloquent-rosidl-cmake, ros-eloquent-rosidl-generator-c, ros-eloquent-rosidl-typesupport-fastrtps-cpp, ros-eloquent-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-eloquent-rosidl-typesupport-fastrtps-c
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-eloquent-ament-cmake, ros-eloquent-fastcdr, ros-eloquent-fastrtps, ros-eloquent-fastrtps-cmake-module, ros-eloquent-rmw, ros-eloquent-rosidl-cmake, ros-eloquent-rosidl-generator-c, ros-eloquent-rosidl-parser, ros-eloquent-rosidl-typesupport-fastrtps-cpp, ros-eloquent-rosidl-typesupport-interface, ros-eloquent-ros-workspace
+Description: Generate the C interfaces for eProsima FastRTPS.
