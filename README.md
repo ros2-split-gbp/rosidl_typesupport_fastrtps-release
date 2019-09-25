@@ -1,3 +1,29 @@
+## rosidl_typesupport_fastrtps (eloquent) - 0.8.0-1
+
+The packages in the `rosidl_typesupport_fastrtps` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --rosdistro eloquent --track eloquent rosidl_typesupport_fastrtps` on `Wed, 25 Sep 2019 21:19:07 -0000`
+
+These packages were released:
+- `fastrtps_cmake_module`
+- `rosidl_typesupport_fastrtps_c`
+- `rosidl_typesupport_fastrtps_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_fastrtps`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_fastrtps.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.8.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.8.0`
+- catkin_pkg version: `0.4.13`
+- rosdep version: `0.16.1`
+- rosdistro version: `0.7.4`
+- vcstools version: `0.1.42`
+
+
 ## rosidl_typesupport_fastrtps (dashing) - 0.7.1-1
 
 The packages in the `rosidl_typesupport_fastrtps` repository were released into the `dashing` distro by running `/usr/bin/bloom-release --rosdistro dashing --track dashing rosidl_typesupport_fastrtps` on `Wed, 08 May 2019 23:16:11 -0000`
