@@ -1,3 +1,29 @@
+## rosidl_typesupport_fastrtps (foxy) - 0.9.0-1
+
+The packages in the `rosidl_typesupport_fastrtps` repository were released into the `foxy` distro by running `/usr/bin/bloom-release -n -r foxy rosidl_typesupport_fastrtps --override-release-repository-push-url git@github.com:ros2-gbp/rosidl_typesupport_fastrtps-release` on `Wed, 29 Apr 2020 01:59:48 -0000`
+
+These packages were released:
+- `fastrtps_cmake_module`
+- `rosidl_typesupport_fastrtps_c`
+- `rosidl_typesupport_fastrtps_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_fastrtps`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_fastrtps.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `0.9.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.3`
+- catkin_pkg version: `0.4.14`
+- rosdep version: `0.18.0`
+- rosdistro version: `0.8.0`
+- vcstools version: `0.1.42`
+
+
 ## rosidl_typesupport_fastrtps (eloquent) - 0.8.0-1
 
 The packages in the `rosidl_typesupport_fastrtps` repository were released into the `eloquent` distro by running `/usr/bin/bloom-release --rosdistro eloquent --track eloquent rosidl_typesupport_fastrtps` on `Wed, 25 Sep 2019 21:19:07 -0000`
