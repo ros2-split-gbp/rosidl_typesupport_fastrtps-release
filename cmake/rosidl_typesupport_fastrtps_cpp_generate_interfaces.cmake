@@ -12,6 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+if(NOT rosidl_generator_cpp_FOUND)
+  message(FATAL_ERROR
+    "'rosidl_generator_cpp' not found when executing "
+    "'rosidl_typesupport_fastrtps_cpp' extension.")
+endif()
+
 find_package(ament_cmake_ros REQUIRED)
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
@@ -30,8 +36,8 @@ foreach(_abs_idl_file ${rosidl_generate_interfaces_ABS_IDL_FILES})
   # Turn idl name into file names
   string_camel_case_to_lower_case_underscore("${_idl_name}" _header_name)
   list(APPEND _generated_files
-    "${_output_path}/${_parent_folder}/dds_fastrtps/${_header_name}__type_support.cpp"
-    "${_output_path}/${_parent_folder}/${_header_name}__rosidl_typesupport_fastrtps_cpp.hpp"
+    "${_output_path}/${_parent_folder}/detail/dds_fastrtps/${_header_name}__type_support.cpp"
+    "${_output_path}/${_parent_folder}/detail/${_header_name}__rosidl_typesupport_fastrtps_cpp.hpp"
   )
 endforeach()
 
@@ -136,8 +142,8 @@ set_target_properties(${rosidl_generate_interfaces_TARGET}${_target_suffix}
 # Include headers from other generators
 target_include_directories(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   PUBLIC
-  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
-  ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_cpp
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp>"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_cpp>"
 )
 
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
@@ -152,7 +158,7 @@ foreach(_pkg_name ${rosidl_generate_interfaces_DEPENDENCY_PACKAGE_NAMES})
   ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
     ${_pkg_name})
   target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-    ${${_pkg_name}_LIBRARIES${_target_suffix}})
+    ${${_pkg_name}_TARGETS${_target_suffix}})
 endforeach()
 
 target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix}
@@ -184,13 +190,14 @@ if(NOT rosidl_generate_interfaces_SKIP_INSTALL)
 
   install(
     TARGETS ${rosidl_generate_interfaces_TARGET}${_target_suffix}
+    EXPORT ${rosidl_generate_interfaces_TARGET}${_target_suffix}
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
     RUNTIME DESTINATION bin
   )
-
-  rosidl_export_typesupport_libraries(${_target_suffix}
+  rosidl_export_typesupport_targets(${_target_suffix}
     ${rosidl_generate_interfaces_TARGET}${_target_suffix})
+  ament_export_targets(${rosidl_generate_interfaces_TARGET}${_target_suffix})
 endif()
 
 if(BUILD_TESTING AND rosidl_generate_interfaces_ADD_LINTER_TESTS)
