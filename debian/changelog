@@ -1,0 +1,62 @@
+ros-rolling-fastrtps-cmake-module (1.0.1-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Tue, 26 May 2020 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (1.0.0-2focal) focal; urgency=high
+
+  * Add feature documentation (#41 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/41>)
+  * Add Quality Declaration and README (#39 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/39>)
+  * Contributors: brawner
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Fri, 22 May 2020 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.9.0-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Fri, 24 Apr 2020 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.8.0-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Wed, 25 Sep 2019 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.7.1-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Wed, 08 May 2019 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.7.0-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Sat, 13 Apr 2019 04:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.6.1-2focal) focal; urgency=high
+
+
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Fri, 11 Jan 2019 05:00:00 -0000
+
+ros-rolling-fastrtps-cmake-module (0.6.0-2focal) focal; urgency=high
+
+  * Change year of copyright notices
+  * Look for debug versions of fastcdr and fastrtps as well
+  * Export FastRTPS libraries
+  * remove obsolete stuff from CMake module
+  * update style and enable linters
+  * update schema url
+  * add schema to manifest files
+  * Added Apache License 2.0
+  * fix CMake syntax
+  * update to new rmw error handling code, add explicit build type
+  * First commit
+  * Contributors: Dirk Thomas, Esteve Fernandez, Miguel Company, Mikael Arguedas, Ricardo González, Ricardo González Moreno, Steven! Ragnarök, William Woodall, richiprosima
+
+ -- Dirk Thomas <dthomas@osrfoundation.org>  Fri, 16 Nov 2018 05:00:00 -0000
+
+
