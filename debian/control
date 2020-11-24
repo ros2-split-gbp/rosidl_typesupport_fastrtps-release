@@ -1,0 +1,12 @@
+Source: ros-dashing-rosidl-typesupport-fastrtps-c
+Section: misc
+Priority: optional
+Maintainer: Dirk Thomas <dthomas@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-dashing-ament-cmake, ros-dashing-ament-lint-auto, ros-dashing-ament-lint-common, ros-dashing-fastcdr, ros-dashing-fastrtps, ros-dashing-fastrtps-cmake-module, ros-dashing-rosidl-cmake, ros-dashing-rosidl-generator-c, ros-dashing-rosidl-typesupport-fastrtps-cpp, ros-dashing-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-dashing-rosidl-typesupport-fastrtps-c
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-dashing-ament-cmake, ros-dashing-fastcdr, ros-dashing-fastrtps, ros-dashing-fastrtps-cmake-module, ros-dashing-rmw, ros-dashing-rosidl-cmake, ros-dashing-rosidl-generator-c, ros-dashing-rosidl-parser, ros-dashing-rosidl-typesupport-fastrtps-cpp, ros-dashing-rosidl-typesupport-interface, ros-dashing-ros-workspace
+Description: Generate the C interfaces for eProsima FastRTPS.
