@@ -17,30 +17,19 @@
 
 #include <string>
 
-#include "rosidl_runtime_c/u16string.h"
+#include "rosidl_generator_c/u16string.h"
 #include "rosidl_typesupport_fastrtps_c/visibility_control.h"
 
 namespace rosidl_typesupport_fastrtps_c
 {
 
-/// Convert a `rosidl_runtime_c__U16String` into a std::wstring
-/**
- * \param[in] u16str The 16-bit character string to copy from.
- * \param[in,out] wstr The std::wstring to copy to.
- */
 ROSIDL_TYPESUPPORT_FASTRTPS_C_PUBLIC
 void u16string_to_wstring(
-  const rosidl_runtime_c__U16String & u16str, std::wstring & wstr);
+  const rosidl_generator_c__U16String & u16str, std::wstring & wstr);
 
-/// Convert a std::wstring into a `rosidl_runtime_c__U16String`.
-/**
- * \param[in] wstr The std::wstring to copy from.
- * \param[in,out] u16str The u16string to copy to.
- * \return true if resizing u16str and assignment succeeded, otherwise false.
- */
 ROSIDL_TYPESUPPORT_FASTRTPS_C_PUBLIC
 bool wstring_to_u16string(
-  const std::wstring & wstr, rosidl_runtime_c__U16String & u16str);
+  const std::wstring & wstr, rosidl_generator_c__U16String & u16str);
 
 }  // namespace rosidl_typesupport_fastrtps_c
 

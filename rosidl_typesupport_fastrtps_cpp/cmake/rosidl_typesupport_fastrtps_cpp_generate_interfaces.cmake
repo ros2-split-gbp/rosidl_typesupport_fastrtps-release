@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-find_package(ament_cmake_ros REQUIRED)
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
 find_package(fastrtps REQUIRED CONFIG)
@@ -30,8 +29,8 @@ foreach(_abs_idl_file ${rosidl_generate_interfaces_ABS_IDL_FILES})
   # Turn idl name into file names
   string_camel_case_to_lower_case_underscore("${_idl_name}" _header_name)
   list(APPEND _generated_files
-    "${_output_path}/${_parent_folder}/detail/dds_fastrtps/${_header_name}__type_support.cpp"
-    "${_output_path}/${_parent_folder}/detail/${_header_name}__rosidl_typesupport_fastrtps_cpp.hpp"
+    "${_output_path}/${_parent_folder}/dds_fastrtps/${_header_name}__type_support.cpp"
+    "${_output_path}/${_parent_folder}/${_header_name}__rosidl_typesupport_fastrtps_cpp.hpp"
   )
 endforeach()
 
@@ -102,7 +101,7 @@ configure_file(
 set(_target_suffix "__rosidl_typesupport_fastrtps_cpp")
 
 # Create a library that builds the generated files
-add_library(${rosidl_generate_interfaces_TARGET}${_target_suffix}
+add_library(${rosidl_generate_interfaces_TARGET}${_target_suffix} SHARED
   ${_generated_files})
 
 # Change output library name if asked to
@@ -143,7 +142,6 @@ target_include_directories(${rosidl_generate_interfaces_TARGET}${_target_suffix}
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   "fastrtps"
   "rmw"
-  "rosidl_runtime_c"
   "rosidl_typesupport_fastrtps_cpp"
   "rosidl_typesupport_interface")
 
@@ -151,13 +149,9 @@ ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
 foreach(_pkg_name ${rosidl_generate_interfaces_DEPENDENCY_PACKAGE_NAMES})
   ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
     ${_pkg_name})
-  target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-    ${${_pkg_name}_LIBRARIES${_target_suffix}})
 endforeach()
 
-target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  ${rosidl_generate_interfaces_TARGET}__rosidl_generator_cpp
-  fastrtps fastcdr)
+target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix} fastrtps fastcdr)
 
 # Make top level generation target depend on this library
 add_dependencies(
@@ -189,8 +183,7 @@ if(NOT rosidl_generate_interfaces_SKIP_INSTALL)
     RUNTIME DESTINATION bin
   )
 
-  rosidl_export_typesupport_libraries(${_target_suffix}
-    ${rosidl_generate_interfaces_TARGET}${_target_suffix})
+  ament_export_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix})
 endif()
 
 if(BUILD_TESTING AND rosidl_generate_interfaces_ADD_LINTER_TESTS)

@@ -16,18 +16,14 @@
 #define ROSIDL_TYPESUPPORT_FASTRTPS_CPP__SERVICE_TYPE_SUPPORT_DECL_HPP_
 
 // Provides the definition of the rosidl_service_type_support_t struct.
-#include <rosidl_runtime_c/service_type_support_struct.h>
+#include <rosidl_generator_c/service_type_support_struct.h>
 // Provides visibility macros like ROSIDL_TYPESUPPORT_FASTRTPS_CPP_PUBLIC.
 #include <rosidl_typesupport_fastrtps_cpp/visibility_control.h>
 
 namespace rosidl_typesupport_fastrtps_cpp
 {
 
-/// Get the rosidl service typesupport handler of the type.
-/**
- * This is implemented in the shared library provided by this package.
- * \return The rosidl_service_type_support_t of type T.
- */
+// This is implemented in the shared library provided by this package.
 template<typename T>
 ROSIDL_TYPESUPPORT_FASTRTPS_CPP_PUBLIC
 const rosidl_service_type_support_t * get_service_type_support_handle();

@@ -36,8 +36,8 @@ find_package(ament_cmake_python REQUIRED)
 ament_export_dependencies(fastrtps)
 ament_export_dependencies(rmw)
 ament_export_dependencies(rosidl_cmake)
-ament_export_dependencies(rosidl_runtime_c)
-ament_export_dependencies(rosidl_runtime_cpp)
+ament_export_dependencies(rosidl_generator_c)
+ament_export_dependencies(rosidl_generator_cpp)
 ament_export_dependencies(rosidl_typesupport_interface)
 
 ament_export_include_directories(include)
@@ -51,45 +51,17 @@ if(WIN32)
   target_compile_definitions(${PROJECT_NAME}
     PRIVATE "ROSIDL_TYPESUPPORT_FASTRTPS_CPP_BUILDING_DLL")
 endif()
-target_include_directories(${PROJECT_NAME} PUBLIC
-  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
-  "$<INSTALL_INTERFACE:include>")
+target_include_directories(${PROJECT_NAME}
+  PUBLIC
+  include
+)
 ament_export_libraries(${PROJECT_NAME})
-ament_export_targets(${PROJECT_NAME})
 
 ament_index_register_resource("rosidl_typesupport_cpp")
 
 if(BUILD_TESTING)
-  find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_lint_auto REQUIRED)
-  find_package(osrf_testing_tools_cpp REQUIRED)
   ament_lint_auto_find_test_dependencies()
-
-  get_target_property(memory_tools_ld_preload_env_var
-    osrf_testing_tools_cpp::memory_tools LIBRARY_PRELOAD_ENVIRONMENT_VARIABLE)
-  get_target_property(memory_tools_is_available
-    osrf_testing_tools_cpp::memory_tools LIBRARY_PRELOAD_ENVIRONMENT_IS_AVAILABLE)
-
-  set(SKIP_MEMORY_TOOLS_TEST "")
-  if(NOT memory_tools_is_available)
-    set(SKIP_MEMORY_TOOLS_TEST "SKIP_TEST")
-  endif()
-
-  ament_add_gtest(test_wstring_conversion test/test_wstring_conversion.cpp)
-  if(TARGET test_wstring_conversion)
-    target_include_directories(test_wstring_conversion PRIVATE
-      ${osrf_testing_tools_cpp_INCLUDE_DIRS})
-    target_link_libraries(test_wstring_conversion
-      ${PROJECT_NAME})
-  endif()
-
-  ament_add_gtest(test_wstring_conversion_mem test/test_wstring_conversion_mem.cpp
-    ENV ${memory_tools_ld_preload_env_var}
-    ${SKIP_MEMORY_TOOLS_TEST})
-  if(TARGET test_wstring_conversion_mem)
-    target_link_libraries(test_wstring_conversion_mem
-      ${PROJECT_NAME} osrf_testing_tools_cpp::memory_tools)
-  endif()
 endif()
 
 ament_package(
@@ -109,7 +81,7 @@ install(
   DESTINATION include
 )
 install(
-  TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
+  TARGETS ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
