@@ -15,7 +15,7 @@ TEMPLATE(
 
 @{
 header_files = [
-    'rosidl_generator_c/service_type_support_struct.h',
+    'rosidl_runtime_c/service_type_support_struct.h',
     'rosidl_typesupport_interface/macros.h',
     package_name + '/msg/rosidl_typesupport_fastrtps_c__visibility_control.h',
 ]
@@ -37,7 +37,7 @@ extern "C"
 
 ROSIDL_TYPESUPPORT_FASTRTPS_C_PUBLIC_@(package_name)
 const rosidl_service_type_support_t *
-  ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, @(', '.join([package_name] + list(interface_path.parents[0].parts) + [service.namespaced_type.name])))();
+ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_SYMBOL_NAME(rosidl_typesupport_fastrtps_c, @(', '.join([package_name] + list(interface_path.parents[0].parts) + [service.namespaced_type.name])))();
 
 #ifdef __cplusplus
 }
