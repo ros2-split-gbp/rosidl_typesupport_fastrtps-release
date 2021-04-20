@@ -1,1 +1,1 @@
-{"base": "36aabf4", "parent": "debian/rolling/fastrtps_cmake_module", "previous": "620383b", "trim": "", "trimbase": ""}
+{"base": "bb07d8f", "parent": "debian/galactic/fastrtps_cmake_module", "previous": "46d0d24", "trim": "", "trimbase": ""}
