@@ -1,0 +1,12 @@
+Source: ros-galactic-rosidl-typesupport-fastrtps-cpp
+Section: misc
+Priority: optional
+Maintainer: Michel Hidalgo <michel@ekumenlabs.com>
+Build-Depends: debhelper (>= 9.0.0), ros-galactic-ament-cmake, ros-galactic-ament-cmake-gtest, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-fastcdr, ros-galactic-fastrtps, ros-galactic-fastrtps-cmake-module, ros-galactic-osrf-testing-tools-cpp, ros-galactic-performance-test-fixture, ros-galactic-rosidl-cmake, ros-galactic-rosidl-runtime-c, ros-galactic-rosidl-runtime-cpp, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rosidl-typesupport-fastrtps-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-ament-cmake-ros, ros-galactic-ament-index-python, ros-galactic-fastcdr, ros-galactic-fastrtps, ros-galactic-fastrtps-cmake-module, ros-galactic-rmw, ros-galactic-rosidl-cli, ros-galactic-rosidl-cmake, ros-galactic-rosidl-parser, ros-galactic-rosidl-runtime-c, ros-galactic-rosidl-runtime-cpp, ros-galactic-rosidl-typesupport-interface, ros-galactic-ros-workspace
+Description: Generate the C++ interfaces for eProsima FastRTPS.
