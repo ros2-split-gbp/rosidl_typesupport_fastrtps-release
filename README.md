@@ -1,3 +1,29 @@
+## rosidl_typesupport_fastrtps (rolling) - 2.0.1-1
+
+The packages in the `rosidl_typesupport_fastrtps` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling -r rolling rosidl_typesupport_fastrtps` on `Wed, 28 Jul 2021 13:12:41 -0000`
+
+These packages were released:
+- `fastrtps_cmake_module`
+- `rosidl_typesupport_fastrtps_c`
+- `rosidl_typesupport_fastrtps_cpp`
+
+Version of package(s) in repository `rosidl_typesupport_fastrtps`:
+
+- upstream repository: https://github.com/ros2/rosidl_typesupport_fastrtps.git
+- release repository: https://github.com/ros2-gbp/rosidl_typesupport_fastrtps-release.git
+- rosdistro version: `2.0.0-1`
+- old version: `2.0.0-1`
+- new version: `2.0.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.10.7`
+- catkin_pkg version: `0.4.23`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.2`
+- vcstools version: `0.1.42`
+
+
 ## rosidl_typesupport_fastrtps (rolling) - 2.0.0-1
 
 The packages in the `rosidl_typesupport_fastrtps` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --track rolling -r rolling rosidl_typesupport_fastrtps` on `Fri, 23 Jul 2021 15:26:11 -0000`
