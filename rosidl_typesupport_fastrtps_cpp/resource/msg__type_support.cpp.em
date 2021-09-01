@@ -62,7 +62,6 @@ size_t get_serialized_size(
 size_t
 max_serialized_size_@(type_.name)(
   bool & full_bounded,
-  bool & is_plain,
   size_t current_alignment);
 }  // namespace typesupport_fastrtps_cpp
 @[    for ns in reversed(type_.namespaces)]@
@@ -347,7 +346,6 @@ size_t
 ROSIDL_TYPESUPPORT_FASTRTPS_CPP_PUBLIC_@(package_name)
 max_serialized_size_@(message.structure.namespaced_type.name)(
   bool & full_bounded,
-  bool & is_plain,
   size_t current_alignment)
 {
   size_t initial_alignment = current_alignment;
@@ -356,9 +354,7 @@ max_serialized_size_@(message.structure.namespaced_type.name)(
   const size_t wchar_size = 4;
   (void)padding;
   (void)wchar_size;
-
-  full_bounded = true;
-  is_plain = true;
+  (void)full_bounded;
 
 @[for member in message.structure.members]@
 
@@ -371,10 +367,9 @@ max_serialized_size_@(message.structure.namespaced_type.name)(
     size_t array_size = @(member.type.maximum_size);
 @[    else]@
     size_t array_size = 0;
-    full_bounded = false;
 @[    end if]@
 @[    if isinstance(member.type, AbstractSequence)]@
-    is_plain = false;
+    full_bounded = false;
     current_alignment += padding +
       eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
 @[    end if]@
@@ -389,7 +384,6 @@ if isinstance(type_, AbstractNestedType):
 }@
 @[  if isinstance(type_, AbstractGenericString)]@
     full_bounded = false;
-    is_plain = false;
     for (size_t index = 0; index < array_size; ++index) {
       current_alignment += padding +
         eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
@@ -422,13 +416,9 @@ if isinstance(type_, AbstractNestedType):
 @[    end if]@
 @[  else]
     for (size_t index = 0; index < array_size; ++index) {
-      bool inner_full_bounded;
-      bool inner_is_plain;
       current_alignment +=
         @('::'.join(type_.namespaces))::typesupport_fastrtps_cpp::max_serialized_size_@(type_.name)(
-        inner_full_bounded, inner_is_plain, current_alignment);
-      full_bounded &= inner_full_bounded;
-      is_plain &= inner_is_plain;
+        full_bounded, current_alignment);
     }
 @[  end if]@
   }
@@ -466,18 +456,9 @@ static uint32_t _@(message.structure.namespaced_type.name)__get_serialized_size(
   return static_cast<uint32_t>(get_serialized_size(*typed_message, 0));
 }
 
-static size_t _@(message.structure.namespaced_type.name)__max_serialized_size(char & bounds_info)
+static size_t _@(message.structure.namespaced_type.name)__max_serialized_size(bool & full_bounded)
 {
-  bool full_bounded;
-  bool is_plain;
-  size_t ret_val;
-
-  ret_val = max_serialized_size_@(message.structure.namespaced_type.name)(full_bounded, is_plain, 0);
-
-  bounds_info =
-    is_plain ? ROSIDL_TYPESUPPORT_FASTRTPS_PLAIN_TYPE :
-    full_bounded ? ROSIDL_TYPESUPPORT_FASTRTPS_BOUNDED_TYPE : ROSIDL_TYPESUPPORT_FASTRTPS_UNBOUNDED_TYPE;
-  return ret_val;
+  return max_serialized_size_@(message.structure.namespaced_type.name)(full_bounded, 0);
 }
 
 static message_type_support_callbacks_t _@(message.structure.namespaced_type.name)__callbacks = {

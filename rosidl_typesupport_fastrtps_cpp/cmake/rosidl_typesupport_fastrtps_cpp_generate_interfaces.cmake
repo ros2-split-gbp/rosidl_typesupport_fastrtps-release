@@ -15,6 +15,8 @@
 find_package(ament_cmake_ros REQUIRED)
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
+find_package(fastrtps REQUIRED CONFIG)
+find_package(FastRTPS REQUIRED MODULE)
 
 
 set(_output_path "${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_cpp/${PROJECT_NAME}")
@@ -139,7 +141,7 @@ target_include_directories(${rosidl_generate_interfaces_TARGET}${_target_suffix}
 )
 
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  "fastcdr"
+  "fastrtps"
   "rmw"
   "rosidl_runtime_c"
   "rosidl_typesupport_fastrtps_cpp"
@@ -155,7 +157,7 @@ endforeach()
 
 target_link_libraries(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   ${rosidl_generate_interfaces_TARGET}__rosidl_generator_cpp
-  fastcdr)
+  fastrtps fastcdr)
 
 # Make top level generation target depend on this library
 add_dependencies(

@@ -15,6 +15,8 @@
 find_package(ament_cmake_ros REQUIRED)
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
+find_package(fastrtps REQUIRED CONFIG)
+find_package(FastRTPS REQUIRED MODULE)
 
 set(_output_path "${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_c/${PROJECT_NAME}")
 set(_generated_files "")
@@ -88,7 +90,7 @@ configure_file(
 
 set(_target_suffix "__rosidl_typesupport_fastrtps_c")
 
-link_directories(${fastcdr_LIBRARY_DIRS})
+link_directories(${fastrtps_LIBRARY_DIRS})
 add_library(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   ${_generated_files})
 if(rosidl_generate_interfaces_LIBRARY_NAME)
@@ -98,7 +100,7 @@ endif()
 set_target_properties(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   PROPERTIES CXX_STANDARD 14)
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  "fastcdr"
+  "fastrtps"
   "rmw"
   "rosidl_runtime_c"
   "rosidl_typesupport_fastrtps_cpp"
@@ -127,7 +129,7 @@ target_include_directories(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_cpp
 )
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  "fastcdr"
+  "fastrtps"
   "rosidl_typesupport_fastrtps_cpp"
   "rosidl_typesupport_fastrtps_c"
 )

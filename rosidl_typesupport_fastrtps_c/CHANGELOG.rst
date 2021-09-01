@@ -2,50 +2,24 @@
 Changelog for package rosidl_typesupport_fastrtps_c
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.2 (2021-08-09)
+1.0.4 (2021-08-31)
 ------------------
-* Revert rosidl targets and dependencies exportation (`#76 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/76>`_)
-  * Revert "Export rosidl_typesupport_fastrtps_c* dependencies (`#75 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/75>`_)"
-  * Revert "Bundle and ensure the exportation of rosidl generated targets (`#73 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/73>`_)"
-* Correctly inform that a BoundedSequence is bounded (`#71 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/71>`_)
-* Contributors: Michel Hidalgo, Miguel Company
 
-2.0.1 (2021-07-28)
+1.0.3 (2021-04-14)
 ------------------
-* Export rosidl_typesupport_fastrtps_c* dependencies (`#75 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/75>`_)
-* Contributors: Michel Hidalgo
+* Update quality declaration links (re: `ros2/docs.ros2.org#52 <https://github.com/ros2/docs.ros2.org/issues/52>`_) (`#70 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/70>`_)
+* Contributors: Simon Honigmann
 
-2.0.0 (2021-07-23)
+1.0.2 (2020-12-09)
 ------------------
-* Bundle and ensure the exportation of rosidl generated targets (`#73 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/73>`_)
-* Fix Fast-RTPS C++ typesupport CLI extension (`#72 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/72>`_)
-* Fastdds type support extensions (`#67 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/67>`_)
-* Remove fastrtps dependency (`#68 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/68>`_)
-* Contributors: Andrea Sorbini, Michel Hidalgo, Miguel Company
-
-1.2.1 (2021-04-06)
-------------------
-* updating quality declaration links (re: `ros2/docs.ros2.org#52 <https://github.com/ros2/docs.ros2.org/issues/52>`_) (`#69 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/69>`_)
-* Contributors: shonigmann
-
-1.2.0 (2021-03-18)
-------------------
-* Expose FastRTPS C typesupport generation via rosidl generate CLI (`#65 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/65>`_)
-* Contributors: Michel Hidalgo
-
-1.1.0 (2020-12-09)
-------------------
-* Update QDs with up-to-date content (`#64 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/64>`_)
-* Fix item number in QD (`#59 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/59>`_)
-* Update QL to 2
-* Update package maintainers (`#55 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/55>`_)
-* Updat QD (`#53 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/53>`_)
-* Fix invalid return on deserialize function (`#51 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/51>`_)
-* Added benchmark test to rosidl_typesupport_fastrtps_c/cpp (`#52 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/52>`_)
-* Update exec dependencies (`#50 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/50>`_)
+* Fix item number in QD (`#59 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/59>`_) (`#61 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/61>`_)
+* Update quality level to 2
+* Update QD links for Foxy
+* Update QD (`#53 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/53>`_)
+* Add benchmark test to rosidl_typesupport_fastrtps_c/cpp (`#52 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/52>`_)
 * Add Security Vulnerability Policy pointing to REP-2006 (`#44 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/44>`_)
 * QD Update Version Stability to stable version (`#46 <https://github.com/ros2/rosidl_typesupport_fastrtps/issues/46>`_)
-* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Jorge Perez, Louise Poubel, Michel Hidalgo, Stephen Brawner, sung-goo-kim
+* Contributors: Alejandro Hernández Cordero, Chris Lalancette, Louise Poubel
 
 1.0.1 (2020-05-26)
 ------------------
