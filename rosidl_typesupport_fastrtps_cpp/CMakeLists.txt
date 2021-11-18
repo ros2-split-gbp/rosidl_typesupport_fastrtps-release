@@ -4,10 +4,10 @@ project(rosidl_typesupport_fastrtps_cpp)
 
 if(DEFINED ENV{FASTRTPS_STATIC_DISABLE})
   set(FASTRTPS_STATIC_DISABLE $ENV{FASTRTPS_STATIC_DISABLE}
-    CACHE BOOL "If FastRTPS Static should be disabled.")
+    CACHE BOOL "If Connext Static should be disabled.")
 else()
   set(FASTRTPS_STATIC_DISABLE FALSE
-    CACHE BOOL "If FastRTPS Static should be disabled.")
+    CACHE BOOL "If Connext Static should be disabled.")
 endif()
 
 # Default to C++14
@@ -23,8 +23,6 @@ find_package(ament_cmake REQUIRED)
 
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
-find_package(fastrtps REQUIRED CONFIG)
-find_package(FastRTPS REQUIRED MODULE)
 if(FASTRTPS_STATIC_DISABLE)
   ament_package()
   message(STATUS "fastrtps static rmw implementation explicitly disabled - skipping '${PROJECT_NAME}'")
@@ -33,7 +31,6 @@ endif()
 
 find_package(ament_cmake_python REQUIRED)
 
-ament_export_dependencies(fastrtps)
 ament_export_dependencies(rmw)
 ament_export_dependencies(rosidl_cmake)
 ament_export_dependencies(rosidl_runtime_c)
@@ -103,6 +100,9 @@ if(BUILD_TESTING)
   if(TARGET benchmark_string_conversions)
     target_link_libraries(benchmark_string_conversions ${PROJECT_NAME})
   endif()
+
+  find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(test_cli_extension test/test_cli_extension.py)
 endif()
 
 ament_package(

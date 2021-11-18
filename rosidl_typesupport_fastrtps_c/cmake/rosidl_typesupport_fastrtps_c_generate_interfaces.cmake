@@ -15,8 +15,6 @@
 find_package(ament_cmake_ros REQUIRED)
 find_package(fastrtps_cmake_module QUIET)
 find_package(fastcdr REQUIRED CONFIG)
-find_package(fastrtps REQUIRED CONFIG)
-find_package(FastRTPS REQUIRED MODULE)
 
 set(_output_path "${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_c/${PROJECT_NAME}")
 set(_generated_files "")
@@ -69,9 +67,12 @@ rosidl_write_generator_arguments(
   TARGET_DEPENDENCIES ${target_dependencies}
 )
 
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
 add_custom_command(
   OUTPUT ${_generated_files}
-  COMMAND ${PYTHON_EXECUTABLE} ${rosidl_typesupport_fastrtps_c_BIN}
+  COMMAND Python3::Interpreter
+  ARGS ${rosidl_typesupport_fastrtps_c_BIN}
   --generator-arguments-file "${generator_arguments_file}"
   DEPENDS ${target_dependencies}
   COMMENT "Generating C type support for eProsima Fast-RTPS"
@@ -90,7 +91,7 @@ configure_file(
 
 set(_target_suffix "__rosidl_typesupport_fastrtps_c")
 
-link_directories(${fastrtps_LIBRARY_DIRS})
+link_directories(${fastcdr_LIBRARY_DIRS})
 add_library(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   ${_generated_files})
 if(rosidl_generate_interfaces_LIBRARY_NAME)
@@ -100,7 +101,7 @@ endif()
 set_target_properties(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   PROPERTIES CXX_STANDARD 14)
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  "fastrtps"
+  "fastcdr"
   "rmw"
   "rosidl_runtime_c"
   "rosidl_typesupport_fastrtps_cpp"
@@ -129,7 +130,7 @@ target_include_directories(${rosidl_generate_interfaces_TARGET}${_target_suffix}
   ${CMAKE_CURRENT_BINARY_DIR}/rosidl_typesupport_fastrtps_cpp
 )
 ament_target_dependencies(${rosidl_generate_interfaces_TARGET}${_target_suffix}
-  "fastrtps"
+  "fastcdr"
   "rosidl_typesupport_fastrtps_cpp"
   "rosidl_typesupport_fastrtps_c"
 )
