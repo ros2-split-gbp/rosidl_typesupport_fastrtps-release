@@ -1,0 +1,12 @@
+Source: ros-humble-rosidl-typesupport-fastrtps-cpp
+Section: misc
+Priority: optional
+Maintainer: Shane Loretz <shane@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-ament-cmake-gtest <!nocheck>, ros-humble-ament-cmake-pytest <!nocheck>, ros-humble-ament-cmake-python, ros-humble-ament-index-python, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-fastcdr, ros-humble-fastrtps-cmake-module, ros-humble-osrf-testing-tools-cpp <!nocheck>, ros-humble-performance-test-fixture <!nocheck>, ros-humble-rmw, ros-humble-rosidl-cli, ros-humble-rosidl-cmake, ros-humble-rosidl-runtime-c, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-rosidl-typesupport-fastrtps-cpp
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python3-dev, ros-humble-ament-cmake-ros, ros-humble-ament-index-python, ros-humble-fastcdr, ros-humble-fastrtps-cmake-module, ros-humble-rmw, ros-humble-rosidl-cli, ros-humble-rosidl-cmake, ros-humble-rosidl-generator-cpp, ros-humble-rosidl-runtime-c, ros-humble-rosidl-runtime-cpp, ros-humble-rosidl-typesupport-interface, ros-humble-ros-workspace
+Description: Generate the C++ interfaces for eProsima FastRTPS.
