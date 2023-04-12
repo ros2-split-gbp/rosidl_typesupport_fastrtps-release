@@ -21,6 +21,13 @@ TEMPLATE(
 }@
 
 @{
+from rosidl_generator_c import idl_structure_type_to_c_typename
+from rosidl_generator_type_description import GET_DESCRIPTION_FUNC
+from rosidl_generator_type_description import GET_HASH_FUNC
+from rosidl_generator_type_description import GET_SOURCES_FUNC
+from rosidl_parser.definition import SERVICE_EVENT_MESSAGE_SUFFIX
+from rosidl_parser.definition import SERVICE_REQUEST_MESSAGE_SUFFIX
+from rosidl_parser.definition import SERVICE_RESPONSE_MESSAGE_SUFFIX
 from rosidl_pycommon import convert_camel_case_to_lower_case_underscore
 
 include_parts = [package_name] + list(interface_path.parents[0].parts) + \
@@ -62,6 +69,9 @@ static rosidl_service_type_support_t @(service.namespaced_type.name)__handle = {
   rosidl_typesupport_fastrtps_c__identifier,
   &@(service.namespaced_type.name)__callbacks,
   get_service_typesupport_handle_function,
+  &_@(service.namespaced_type.name)@(SERVICE_REQUEST_MESSAGE_SUFFIX)__type_support,
+  &_@(service.namespaced_type.name)@(SERVICE_RESPONSE_MESSAGE_SUFFIX)__type_support,
+  &_@(service.namespaced_type.name)@(SERVICE_EVENT_MESSAGE_SUFFIX)__type_support,
   ROSIDL_TYPESUPPORT_INTERFACE__SERVICE_CREATE_EVENT_MESSAGE_SYMBOL_NAME(
     rosidl_typesupport_c,
     @(',\n    '.join(service.namespaced_type.namespaced_name()))
@@ -70,7 +80,9 @@ static rosidl_service_type_support_t @(service.namespaced_type.name)__handle = {
     rosidl_typesupport_c,
     @(',\n    '.join(service.namespaced_type.namespaced_name()))
   ),
-  &_@(service.namespaced_type.name)_Event__type_support
+  &@(idl_structure_type_to_c_typename(service.namespaced_type))__@(GET_HASH_FUNC),
+  &@(idl_structure_type_to_c_typename(service.namespaced_type))__@(GET_DESCRIPTION_FUNC),
+  &@(idl_structure_type_to_c_typename(service.namespaced_type))__@(GET_SOURCES_FUNC),
 };
 
 const rosidl_service_type_support_t *
