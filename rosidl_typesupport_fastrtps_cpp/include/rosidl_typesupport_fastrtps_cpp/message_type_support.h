@@ -15,9 +15,9 @@
 #ifndef ROSIDL_TYPESUPPORT_FASTRTPS_CPP__MESSAGE_TYPE_SUPPORT_H_
 #define ROSIDL_TYPESUPPORT_FASTRTPS_CPP__MESSAGE_TYPE_SUPPORT_H_
 
-#include "rosidl_runtime_c/message_type_support_struct.h"
-
 #include <fastcdr/Cdr.h>
+
+#include "rosidl_runtime_c/message_type_support_struct.h"
 
 /// Feature define to allow API version detection
 #define ROSIDL_TYPESUPPORT_FASTRTPS_HAS_PLAIN_TYPES
